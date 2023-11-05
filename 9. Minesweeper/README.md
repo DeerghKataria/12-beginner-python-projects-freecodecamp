@@ -1,1 +1,2 @@
-This is the CLI version of the famous game minesweeper.
+This is the CLI version of
+the famous game minesweeper.
