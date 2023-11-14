@@ -32,7 +32,7 @@ Ensure you have Python installed. This script runs on Python 3.
 ## How to Run
 
 ```bash
-python minesweeper.py
+python3 minesweeper.py
 ```
 
 ## Customization
