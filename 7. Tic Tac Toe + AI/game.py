@@ -139,5 +139,5 @@ if __name__ == '__main__':
         else:
             ties += 1
 
-    print(f'After 1000 iterations, we see {x_wins} X wins, {o_wins} O wins, and {ties} Ties')
+    print(f'After 100 iterations, we see {x_wins} X wins, {o_wins} O wins, and {ties} Ties')
 
