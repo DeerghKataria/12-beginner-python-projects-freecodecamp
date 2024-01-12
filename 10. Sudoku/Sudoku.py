@@ -47,7 +47,7 @@ def solve_sudoku(puzzle):
     # Returning a solution
     # Mutates puzzle to the solution if the solution exists.
 
-    # Step 1: Choosing a position of the puzzle to make a guess
+    # Step 1: Choosing a position of kthe puzzle to make a guess
     row, col = find_next_empty(puzzle)
 
     # Step 1.1: This is a validation check to see whether we're left with valid inputs or not
@@ -58,5 +58,37 @@ def solve_sudoku(puzzle):
     for guess in range(1, 10):   # 1, 2, 3.....9
         # Step 3: To check whether this is a valid guess or not
         if is_valid(puzzle, guess, row, col):
+            # Step 3.1: If this valid, then we can place that guess on the puzzle!
+            puzzle[row][col] = guess
+
+            # Now, we are recursively calling this again and again!
+            if solve_sudoku(puzzle):
+                return True
+            
+        # Step 5: If not valid or the guess didn't really solve the sudoku
+        # Then we need to backtrack and tell the function that it was a wrong guess
+            
+        puzzle[row][col] = -1   # We're resetting that specific row or column.
+
+    # Step 6: After all trying all the combinations using backtracking if we still cannot find any
+    # solutions that means we couldn't find the solution for the sudoku or simply the sudoku is not solvable.
+    return False
+
+if __name__ == '__main__':
+    example_board = [
+        [3, 9, -1,   -1, 5, -1,   -1, -1, -1],
+        [-1, -1, -1,   2, -1, -1,   -1, -1, 5],
+        [-1, -1, -1,   7, 1, 9,   -1, 8, -1],
+
+        [-1, 5, -1,   -1, 6, 8,   -1, -1, -1],
+        [2, -1, 6,   -1, -1, 3,   -1, -1, -1],
+        [-1, -1, -1,   -1, -1, -1,   -1, -1, 4],
+
+        [5, -1, -1,   -1, -1, -1,   -1, -1, -1],
+        [6, 7, -1,   1, -1, 5,   -1, 4, -1],
+        [1, -1, 9,   -1, -1, -1,   2, -1, -1]
+    ]
+    print(solve_sudoku(example_board))
+    print(example_board)
 
     
