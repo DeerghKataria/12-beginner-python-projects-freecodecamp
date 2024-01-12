@@ -1,3 +1,5 @@
+from pprint import pprint
+
 def find_next_empty(puzzle):
     # Finds the next row, col on the puzzle that's not filled yet ---> replace it with -1
     # return row, col tuple (or (None, None) if there is none)
@@ -30,8 +32,8 @@ def is_valid(puzzle, guess, row, col):
     
     # and then for square you have to iterate over the 3x3 values in the row/col
 
-    row_start = (row // 3)  # 1 // 3 = 0, 5 // 3 = 1, ...
-    col_start = (col // 3)
+    row_start = (row // 3) * 3 # 1 // 3 = 0, 5 // 3 = 1, ...
+    col_start = (col // 3) * 3
 
     for r in range(row_start, row_start + 3):
         for c in range(col_start, col_start + 3):
@@ -89,6 +91,6 @@ if __name__ == '__main__':
         [1, -1, 9,   -1, -1, -1,   2, -1, -1]
     ]
     print(solve_sudoku(example_board))
-    print(example_board)
+    pprint(example_board)
 
     
